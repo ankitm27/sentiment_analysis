@@ -11,25 +11,27 @@ def preprocessing(tweet):
     #convrt into lower case 
     tweet = tweet.lower()
     #convert @title to AT_USER
-    tweet = re.sub("@[^\s]+","AT_USER",tweet)
+    tweet = re.sub("@[^\s]+","",tweet)
     #convert #hashtag into hashtag
     tweet = re.sub('#',"",tweet)
     #convert url to "URL"
-    tweet = re.sub('((www\.[^s\]+)|(https?://[^s]+))','URL',tweet)
+    tweet = re.sub('((www\.[^s\]+)|(https?://[^s]+))','',tweet)
     #convert multiple space into single space
     tweet = re.sub('[\s]+', ' ' ,tweet)
     #convert ! into ""
     tweet = re.sub("!","",tweet)
     #trim
     tweet = tweet.strip(" ")  
+    #remove dot
+    tweet = re.sub('[\.]+','',tweet)
        
     return tweet
 
 
 def nltk_preprocessing(tweet):
     stop_words = list(stopwords.words("english"))
-    stop_words.append('AT_USER')
-    stop_words.append('URL')
+    #stop_words.append('AT_USER')
+    #stop_words.append('URL')
     #print stop_words
     words = word_tokenize(tweet)
     filtered_sentence = []
@@ -62,15 +64,15 @@ def word_correct(tweet):
 
 
 
-tweet = "@PrincessSuperC Hey Cici #sweetheart! Just wanted to let u know I luv u! OH! and will the mixtape drop soon? FANTASY RIDE MAY 5TH!!!!"
-print tweet
-tweet = preprocessing(tweet)
-print tweet
-tweet = nltk_preprocessing(tweet)
-print tweet
-tweet = remove_length_one_word(tweet)
-print tweet
-tweet = remove_word_starting_with_number(tweet)
-print tweet
-tweet = word_correct(tweet)
-print tweet
+#tweet = "@PrincessSuperC Hey Cici #sweetheart! Just wanted to let u know I luv u! OH! and will the mixtape drop soon? FANTASY RIDE MAY 5TH!!!!"
+
+def complete_preprocessing(tweet):
+    tweet = preprocessing(tweet)
+    tweet = nltk_preprocessing(tweet)
+    tweet = remove_length_one_word(tweet)
+    tweet = remove_word_starting_with_number(tweet)
+    tweet = word_correct(tweet)
+    return tweet
+
+
+
