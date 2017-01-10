@@ -15,7 +15,7 @@ def preprocessing(tweet):
     #convert #hashtag into hashtag
     tweet = re.sub('#',"",tweet)
     #convert url to "URL"
-    tweet = re.sub('((www\.[^s\]+)|(https?://[^s]+))','',tweet)
+    tweet = re.sub('((www\.[^s\]+)|(https?://[^s]+)|(http?://[^s]+))','',tweet)
     #convert multiple space into single space
     tweet = re.sub('[\s]+', ' ' ,tweet)
     #convert ! into ""
@@ -24,6 +24,8 @@ def preprocessing(tweet):
     tweet = tweet.strip(" ")  
     #remove dot
     tweet = re.sub('[\.]+','',tweet)
+    #remove apostrophe words
+    tweet = re.sub("\S*['-][a-zA-Z'-]+",'',tweet)
        
     return tweet
 
@@ -71,7 +73,7 @@ def complete_preprocessing(tweet):
     tweet = nltk_preprocessing(tweet)
     tweet = remove_length_one_word(tweet)
     tweet = remove_word_starting_with_number(tweet)
-    tweet = word_correct(tweet)
+    #tweet = word_correct(tweet)
     return tweet
 
 
