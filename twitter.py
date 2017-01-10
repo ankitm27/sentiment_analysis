@@ -12,12 +12,13 @@ auth.set_access_token("358637575-qNNpnSRvnPOXZeafmwedWcL1VKw0DD9pBYwKpxRg","j4xY
 class MyListener(StreamListener):
     def on_data(self, data):
         try:
-            #with open('python.json', 'a') as f:
-            #    f.write(data["text"])
-            #    return True
+            with open('python.json', 'a') as f:
+                f.write(data)
+                return True
             #json_load = json.loads(data)
             #texts = json_load['text']
-            print data.text
+            #print data
+            
         except BaseException as e:
             #print &quot;Error on_data: %s&quot; % str(e))
             pass
