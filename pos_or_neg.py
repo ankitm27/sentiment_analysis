@@ -11,6 +11,7 @@ print dictionary
 
 tweet = "hii test tweet bounds"
 tweet = complete_preprocessing(tweet)
+print tweet
 
 pos = 1
 neg = 1
