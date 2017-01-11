@@ -73,7 +73,7 @@ def complete_preprocessing(tweet):
     tweet = nltk_preprocessing(tweet)
     tweet = remove_length_one_word(tweet)
     tweet = remove_word_starting_with_number(tweet)
-    #tweet = word_correct(tweet)
+    tweet = word_correct(tweet)
     return tweet
 
 
