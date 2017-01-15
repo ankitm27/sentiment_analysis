@@ -26,7 +26,12 @@ def preprocessing(tweet):
     tweet = re.sub('[\.]+','',tweet)
     #remove apostrophe words
     tweet = re.sub("\S*['-][a-zA-Z'-]+",'',tweet)
-       
+    #remove backword slash
+    tweet = re.sub("\s*\\\[a-zA-Z]*","",tweet)
+    #remove forward slash        
+    tweet = re.sub("\s*\/[a-zA-Z]*","",tweet) 
+    #remove multiple character
+    tweet = re.sub(r'(.)\1+',r'\1',tweet)
     return tweet
 
 
@@ -73,7 +78,7 @@ def complete_preprocessing(tweet):
     tweet = nltk_preprocessing(tweet)
     tweet = remove_length_one_word(tweet)
     tweet = remove_word_starting_with_number(tweet)
-    tweet = word_correct(tweet)
+    #tweet = word_correct(tweet)
     return tweet
 
 
