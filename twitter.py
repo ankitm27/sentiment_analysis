@@ -5,8 +5,8 @@ from tweepy.streaming import StreamListener
 
 
 
-auth = tweepy.OAuthHandler("4OAW8cfY6FLy1xW8LhLJwzMMp","Bz70UwAIPVzOV3j6lIqUjhSgbLY9GCAuy8jUIjcsyvKwMMP91p")
-auth.set_access_token("358637575-qNNpnSRvnPOXZeafmwedWcL1VKw0DD9pBYwKpxRg","j4xYlBkQJtBOFlnAFAY8HdDEfyriJCpvxHmgR3WZQ94ew")
+auth = tweepy.OAuthHandler("")
+auth.set_access_token("")
 
  
 class MyListener(StreamListener):
